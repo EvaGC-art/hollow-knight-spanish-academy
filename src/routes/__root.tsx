@@ -72,14 +72,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
+      { title: "Hollownest Lengua" },
+      { name: "description", content: "Hollow Knight Spanish Academy is an interactive web app teaching Spanish grammar to 13-year-olds." },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { property: "og:title", content: "Hollownest Lengua" },
+      { property: "og:description", content: "Hollow Knight Spanish Academy is an interactive web app teaching Spanish grammar to 13-year-olds." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Hollownest Lengua" },
+      { name: "twitter:description", content: "Hollow Knight Spanish Academy is an interactive web app teaching Spanish grammar to 13-year-olds." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49a38de4-6b9e-4dfc-9cab-0d359c0a82d4/id-preview-ad4084c4--c4450576-b248-4d72-9ea1-18357d875d71.lovable.app-1778836209261.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/49a38de4-6b9e-4dfc-9cab-0d359c0a82d4/id-preview-ad4084c4--c4450576-b248-4d72-9ea1-18357d875d71.lovable.app-1778836209261.png" },
     ],
     links: [
       {
