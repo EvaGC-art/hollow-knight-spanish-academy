@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5">
+<meta name="theme-color" content="#0A0A16">
+<meta name="description" content="Hallownest · Lengua 2º ESO — App educativa de gramática española con temática Hollow Knight. Coliseo, Alquimista, Jefes y más.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Hallownest · Lengua 2º ESO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="hdr" id="mainHdr" style="display:none" role="banner">
+    <div class="hdr-row">
+      <div class="hdr-left">
+        <div class="hdr-title">✦ Hallownest</div>
+        <div class="hdr-rank" id="hdrRank"></div>
+      </div>
+      <div class="hdr-stats">
+        <button type="button" class="stat" id="hdrBadge" onclick="showShop()" title="Logros y tienda" aria-label="Abrir tienda y logros"></button>
+        <div class="stat" aria-label="Geo acumulado">⬡ <span id="xpDisp">0</span></div>
+        <div class="stat red" aria-label="Máscaras restantes">◆ <span id="maskDisp">5</span></div>
+      </div>
+    </div>
+    <div class="ebar-row">
+      <div class="ebar-label">Alma</div>
+      <div class="ebar-wrap" id="ebarWrap" onclick="tryFuseSoul()" role="button" tabindex="0" aria-label="Barra de alma — toca para fundir cuando esté llena">
+        <div class="ebar" id="ebar"></div>
+      </div>
+      <div class="ebar-pct" id="ebarPct">0%</div>
+    </div>
+  </header>
+
+  <main class="content" id="content" role="main"></main>
+
+  <nav class="bnav" id="mainNav" style="display:none" role="navigation" aria-label="Navegación principal">
+    <button class="nbtn active" id="n0" onclick="showHome()" aria-label="Mapa"><span class="ni" aria-hidden="true">🗺️</span>Mapa</button>
+    <button class="nbtn" id="n1" onclick="showGram()" aria-label="Archivos de gramática"><span class="ni" aria-hidden="true">📜</span>Archivos</button>
+    <button class="nbtn" id="n2" onclick="showTrucos()" aria-label="Reliquias y trucos"><span class="ni" aria-hidden="true">✦</span>Reliquias</button>
+    <button class="nbtn" id="n3" onclick="showTest()" aria-label="Coliseo de preguntas"><span class="ni" aria-hidden="true">⚔️</span>Coliseo</button>
+    <button class="nbtn" id="n4" onclick="showAlquimista()" aria-label="Alquimista de sintaxis"><span class="ni" aria-hidden="true">⚗️</span>Alquimista</button>
+    <button class="nbtn" id="n5" onclick="showBossMenu()" aria-label="Jefes finales"><span class="ni" aria-hidden="true">💀</span>Jefes</button>
+    <button class="nbtn" id="n6" onclick="showShop()" aria-label="Tienda Iselda"><span class="ni" aria-hidden="true">🛍️</span>Iselda</button>
+  </nav>
+
+  <div class="fpanel" id="fpanel" role="status" aria-live="polite">
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <span id="ficon" style="font-size:20px;margin-top:2px" aria-hidden="true"></span>
+      <div><div class="ftitle" id="ftitle"></div><div class="fexp" id="fexp"></div></div>
+    </div>
+    <button class="fnext" id="fnext"></button>
+  </div>
+</div>
+<div id="toastEl" style="opacity:0" role="status" aria-live="polite"></div>
+
+<script src="./app.js" defer></script>
+</body>
+</html>
