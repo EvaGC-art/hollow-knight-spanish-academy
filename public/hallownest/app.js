@@ -290,15 +290,15 @@ function showWelcome(){
     <p class="welcome-text">Este reino es tu guía para dominar la <strong style="color:var(--gold)">gramática española</strong>. Aprende a clasificar oraciones, identificar complementos y analizar sintaxis.</p>
     <p class="welcome-text" style="font-size:13px;color:var(--soul-d);margin-top:2px">Toca cualquier paso para empezar:</p>
     <div class="welcome-flow">
-      <button type="button" class="wf-step" onclick="goWelcome('gram')" aria-label="Ir a Archivos"><span class="wf-icon">📜</span><span class="wf-lbl">Archivos</span></button>
+      <button type="button" class="wf-step" data-welcome-target="gram" onclick="return goWelcomeTap(event,'gram')" ontouchend="return goWelcomeTap(event,'gram')" aria-label="Ir a Archivos"><span class="wf-icon">📜</span><span class="wf-lbl">Archivos</span></button>
       <span class="wf-arrow" aria-hidden="true">→</span>
-      <button type="button" class="wf-step" onclick="goWelcome('trucos')" aria-label="Ir a Reliquias"><span class="wf-icon">✦</span><span class="wf-lbl">Reliquias</span></button>
+      <button type="button" class="wf-step" data-welcome-target="trucos" onclick="return goWelcomeTap(event,'trucos')" ontouchend="return goWelcomeTap(event,'trucos')" aria-label="Ir a Reliquias"><span class="wf-icon">✦</span><span class="wf-lbl">Reliquias</span></button>
       <span class="wf-arrow" aria-hidden="true">→</span>
-      <button type="button" class="wf-step" onclick="goWelcome('test')" aria-label="Ir al Coliseo"><span class="wf-icon">⚔️</span><span class="wf-lbl">Coliseo</span></button>
+      <button type="button" class="wf-step" data-welcome-target="test" onclick="return goWelcomeTap(event,'test')" ontouchend="return goWelcomeTap(event,'test')" aria-label="Ir al Coliseo"><span class="wf-icon">⚔️</span><span class="wf-lbl">Coliseo</span></button>
       <span class="wf-arrow" aria-hidden="true">→</span>
-      <button type="button" class="wf-step" onclick="goWelcome('alq')" aria-label="Ir al Alquimista"><span class="wf-icon">⚗️</span><span class="wf-lbl">Alquimista</span></button>
+      <button type="button" class="wf-step" data-welcome-target="alq" onclick="return goWelcomeTap(event,'alq')" ontouchend="return goWelcomeTap(event,'alq')" aria-label="Ir al Alquimista"><span class="wf-icon">⚗️</span><span class="wf-lbl">Alquimista</span></button>
       <span class="wf-arrow" aria-hidden="true">→</span>
-      <button type="button" class="wf-step" onclick="goWelcome('boss')" aria-label="Ir a Jefes"><span class="wf-icon">💀</span><span class="wf-lbl">Jefes</span></button>
+      <button type="button" class="wf-step" data-welcome-target="boss" onclick="return goWelcomeTap(event,'boss')" ontouchend="return goWelcomeTap(event,'boss')" aria-label="Ir a Jefes"><span class="wf-icon">💀</span><span class="wf-lbl">Jefes</span></button>
     </div>
     <button class="gbtn" onclick="markWelcomeSeen()" style="max-width:280px">Comenzar la Aventura ▸</button>
   </div>`;
@@ -306,6 +306,11 @@ function showWelcome(){
 function markWelcomeSeen(){
   if(S.currentUser&&S.users[S.currentUser])S.users[S.currentUser].seenWelcome=true;
   saveDB();showHome();
+}
+function goWelcomeTap(ev,sec){
+  if(ev){ev.preventDefault();ev.stopPropagation();}
+  goWelcome(sec);
+  return false;
 }
 function goWelcome(sec){
   if(S.currentUser&&S.users[S.currentUser])S.users[S.currentUser].seenWelcome=true;
