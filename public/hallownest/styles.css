@@ -113,6 +113,7 @@ body{margin:0;font-family:var(--body);background:#000;color:var(--text);display:
 .welcome-flow{display:flex;align-items:stretch;flex-wrap:wrap;justify-content:center;gap:6px;margin:6px 0;width:100%;max-width:360px}
 .wf-step{appearance:none;-webkit-appearance:none;background:var(--panel);border:1px solid var(--gold-d);border-radius:var(--r);padding:10px 8px;font-size:13px;text-align:center;min-width:84px;flex:1 1 84px;cursor:pointer;font-family:var(--body);color:var(--pale);transition:all .15s;-webkit-tap-highlight-color:transparent;touch-action:manipulation;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
 .wf-step:hover,.wf-step:active{background:rgba(201,168,76,.15);transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.wf-step *{pointer-events:none;user-select:none;-webkit-user-select:none}
 .wf-step .wf-icon{font-size:22px;display:block;margin-bottom:2px}
 .wf-step .wf-lbl{font-family:var(--title);font-size:9px;color:var(--gold);text-transform:uppercase;letter-spacing:1px}
 .wf-arrow{font-size:14px;color:var(--gold-d);align-self:center}
