@@ -277,30 +277,48 @@ function logout(){saveUser();S.currentUser=null;showLogin()}
 
 // ═══════════════════════════════ WELCOME ═══════════════════════════════
 function showWelcome(){
+  // Mostramos el header y el menú inferior también en la bienvenida
+  // para que el alumno pueda acceder a cualquier sección sin tener que
+  // hacer scroll ni esperar a pulsar "Comenzar".
+  document.getElementById('mainHdr').style.display='block';
+  document.getElementById('mainNav').style.display='flex';
+  updHdr();
   document.getElementById('content').innerHTML=`
   <div class="welcome-wrap anim-fadeup">
-    <div style="animation:float 3.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(118,215,234,.3))">${buildAvatar(100)}</div>
+    <div style="animation:float 3.5s ease-in-out infinite;filter:drop-shadow(0 0 20px rgba(118,215,234,.3))">${buildAvatar(86)}</div>
     <div class="welcome-title">Bienvenido a<br>Hallownest</div>
-    <p class="welcome-text">Este reino es tu guía para dominar la <strong style="color:var(--gold)">gramática española</strong>. Aquí aprenderás a clasificar oraciones, identificar complementos y analizar sintaxis.</p>
-    <p class="welcome-text" style="font-size:14px">Sigue este camino para avanzar:</p>
+    <p class="welcome-text">Este reino es tu guía para dominar la <strong style="color:var(--gold)">gramática española</strong>. Aprende a clasificar oraciones, identificar complementos y analizar sintaxis.</p>
+    <p class="welcome-text" style="font-size:13px;color:var(--soul-d);margin-top:2px">Toca cualquier paso para empezar:</p>
     <div class="welcome-flow">
-      <div class="wf-step"><span class="wf-icon">📜</span><span class="wf-lbl">Archivos</span></div>
-      <div class="wf-arrow">→</div>
-      <div class="wf-step"><span class="wf-icon">✦</span><span class="wf-lbl">Reliquias</span></div>
-      <div class="wf-arrow">→</div>
-      <div class="wf-step"><span class="wf-icon">⚔️</span><span class="wf-lbl">Coliseo</span></div>
-      <div class="wf-arrow">→</div>
-      <div class="wf-step"><span class="wf-icon">⚗️</span><span class="wf-lbl">Alquimista</span></div>
-      <div class="wf-arrow">→</div>
-      <div class="wf-step"><span class="wf-icon">💀</span><span class="wf-lbl">Jefes</span></div>
+      <button type="button" class="wf-step" onclick="goWelcome('gram')" aria-label="Ir a Archivos"><span class="wf-icon">📜</span><span class="wf-lbl">Archivos</span></button>
+      <span class="wf-arrow" aria-hidden="true">→</span>
+      <button type="button" class="wf-step" onclick="goWelcome('trucos')" aria-label="Ir a Reliquias"><span class="wf-icon">✦</span><span class="wf-lbl">Reliquias</span></button>
+      <span class="wf-arrow" aria-hidden="true">→</span>
+      <button type="button" class="wf-step" onclick="goWelcome('test')" aria-label="Ir al Coliseo"><span class="wf-icon">⚔️</span><span class="wf-lbl">Coliseo</span></button>
+      <span class="wf-arrow" aria-hidden="true">→</span>
+      <button type="button" class="wf-step" onclick="goWelcome('alq')" aria-label="Ir al Alquimista"><span class="wf-icon">⚗️</span><span class="wf-lbl">Alquimista</span></button>
+      <span class="wf-arrow" aria-hidden="true">→</span>
+      <button type="button" class="wf-step" onclick="goWelcome('boss')" aria-label="Ir a Jefes"><span class="wf-icon">💀</span><span class="wf-lbl">Jefes</span></button>
     </div>
-    <p class="welcome-text" style="font-size:13px;color:var(--soul-d)">Lee los <strong>Archivos</strong> para entender los conceptos. Aprende los patrones en las <strong>Reliquias</strong>. Practica en el <strong>Coliseo</strong> y pon a prueba todo en el <strong>Alquimista</strong>. Cuando estés listo, enfrenta a los <strong>Jefes Finales</strong>.</p>
     <button class="gbtn" onclick="markWelcomeSeen()" style="max-width:280px">Comenzar la Aventura ▸</button>
   </div>`;
 }
 function markWelcomeSeen(){
   if(S.currentUser&&S.users[S.currentUser])S.users[S.currentUser].seenWelcome=true;
   saveDB();showHome();
+}
+function goWelcome(sec){
+  if(S.currentUser&&S.users[S.currentUser])S.users[S.currentUser].seenWelcome=true;
+  saveDB();
+  if(sec==='gram')showGram();
+  else if(sec==='trucos')showTrucos();
+  else if(sec==='test')showTest();
+  else if(sec==='alq')showAlquimista();
+  else if(sec==='boss'){
+    if(S.xp>=50)showBossMenu();
+    else{toast('Necesitas 50 Geo para los Jefes ⬡');showHome();}
+  }
+  else showHome();
 }
 
 // ═══════════════════════════════ HOME ═══════════════════════════════
